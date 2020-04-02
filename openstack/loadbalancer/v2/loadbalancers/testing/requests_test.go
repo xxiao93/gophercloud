@@ -67,6 +67,7 @@ func TestCreateLoadbalancer(t *testing.T) {
 		Flavor:       "medium",
 		Provider:     "haproxy",
 		Tags:         []string{"test", "stage"},
+		AvailabilityZoneHint: []string{"nova", "default-az"},
 	}).Extract()
 	th.AssertNoErr(t, err)
 

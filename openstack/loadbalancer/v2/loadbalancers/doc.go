@@ -32,6 +32,7 @@ Example to Create a Load Balancer
 		Flavor:       "medium",
 		Provider:     "haproxy",
 		Tags:         []string{"test", "stage"},
+		AvailabilityZoneHint:  []string{"nova", "default-az"}
 	}
 
 	lb, err := loadbalancers.Create(networkClient, createOpts).Extract()

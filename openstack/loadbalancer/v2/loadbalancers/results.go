@@ -63,6 +63,9 @@ type LoadBalancer struct {
 	// Tags is a list of resource tags. Tags are arbitrarily defined strings
 	// attached to the resource.
 	Tags []string `json:"tags"`
+
+	// AvailabilityZoneHint is the availability_zone_hints of loadbalancer
+	AvailabilityZoneHint []string `json:"availability_zone_hints"`
 }
 
 // StatusTree represents the status of a loadbalancer.

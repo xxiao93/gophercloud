@@ -116,6 +116,9 @@ type CreateOpts struct {
 
 	// Tags is a set of resource tags.
 	Tags []string `json:"tags,omitempty"`
+
+	// the availabe zone of lb like ['default-az', 'nova']
+	AvailabilityZoneHint []string `json:"availability_zone_hints,omitempty"`
 }
 
 // ToLoadBalancerCreateMap builds a request body from CreateOpts.

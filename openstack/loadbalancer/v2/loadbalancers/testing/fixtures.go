@@ -30,7 +30,8 @@ const LoadbalancersListBody = `
 			"admin_state_up": true,
 			"provisioning_status": "ACTIVE",
 			"operating_status": "ONLINE",
-			"tags": ["test", "stage"]
+			"tags": ["test", "stage"],
+			"availability_zone_hints": ["nova", "dafault-az"]
 		},
 		{
 			"id": "36e08a3e-a78f-4b40-a229-1e7e23eee1ab",
@@ -45,7 +46,8 @@ const LoadbalancersListBody = `
 			"admin_state_up": true,
 			"provisioning_status": "PENDING_CREATE",
 			"operating_status": "OFFLINE",
-			"tags": ["test", "stage"]
+			"tags": ["test", "stage"],
+			"availability_zone_hints": ["nova", "dafault-az"]
 		}
 	]
 }
@@ -67,7 +69,8 @@ const SingleLoadbalancerBody = `
 		"admin_state_up": true,
 		"provisioning_status": "PENDING_CREATE",
 		"operating_status": "OFFLINE",
-		"tags": ["test", "stage"]
+		"tags": ["test", "stage"],
+		"availability_zone_hints": ["nova", "dafault-az"]
 	}
 }
 `
@@ -88,7 +91,8 @@ const PostUpdateLoadbalancerBody = `
 		"admin_state_up": true,
 		"provisioning_status": "PENDING_CREATE",
 		"operating_status": "OFFLINE",
-		"tags": ["test"]
+		"tags": ["test"],
+		"availability_zone_hints": ["nova", "dafault-az"]
 	}
 }
 `
@@ -103,6 +107,7 @@ const GetLoadbalancerStatusesBody = `
 			"provisioning_status": "PENDING_UPDATE",
 			"operating_status": "ACTIVE",
 			"tags": ["test", "stage"],
+			"availability_zone_hints": ["nova", "dafault-az"],
 			"listeners": [{
 				"id": "db902c0c-d5ff-4753-b465-668ad9656918",
 				"name": "db",
@@ -158,6 +163,7 @@ var (
 		ProvisioningStatus: "ACTIVE",
 		OperatingStatus:    "ONLINE",
 		Tags:               []string{"test", "stage"},
+		AvailabilityZoneHint: []string{"nova", "default-az"},
 	}
 	LoadbalancerDb = loadbalancers.LoadBalancer{
 		ID:                 "36e08a3e-a78f-4b40-a229-1e7e23eee1ab",
@@ -173,6 +179,7 @@ var (
 		ProvisioningStatus: "PENDING_CREATE",
 		OperatingStatus:    "OFFLINE",
 		Tags:               []string{"test", "stage"},
+		AvailabilityZoneHint: []string{"nova", "default-az"},
 	}
 	LoadbalancerUpdated = loadbalancers.LoadBalancer{
 		ID:                 "36e08a3e-a78f-4b40-a229-1e7e23eee1ab",
@@ -188,6 +195,7 @@ var (
 		ProvisioningStatus: "PENDING_CREATE",
 		OperatingStatus:    "OFFLINE",
 		Tags:               []string{"test"},
+		AvailabilityZoneHint: []string{"nova", "default-az"},
 	}
 	LoadbalancerStatusesTree = loadbalancers.StatusTree{
 		Loadbalancer: &loadbalancers.LoadBalancer{
@@ -196,6 +204,7 @@ var (
 			ProvisioningStatus: "PENDING_UPDATE",
 			OperatingStatus:    "ACTIVE",
 			Tags:               []string{"test", "stage"},
+			AvailabilityZoneHint: []string{"nova", "default-az"},
 			Listeners: []listeners.Listener{{
 				ID:                 "db902c0c-d5ff-4753-b465-668ad9656918",
 				Name:               "db",
@@ -264,7 +273,8 @@ func HandleLoadbalancerCreationSuccessfully(t *testing.T, response string) {
 				"flavor": "medium",
 				"provider": "haproxy",
 				"admin_state_up": true,
-				"tags": ["test", "stage"]
+				"tags": ["test", "stage"],
+				"availability_zone_hints": ["nova", "dafault-az"]
 			}
 		}`)
 
